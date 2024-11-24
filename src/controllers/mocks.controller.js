@@ -13,15 +13,25 @@ const getMockPets = (req, res) => {
  };
 
  const generateData = async (req, res) => {
-    const { users, pets} = req.body;
+    const users = parseInt(req.query.users) || 50;
+    const pets = parseInt(req.query.pets) || 50;
+    
     try {
         const mockeUsers = generateMockUsers(users);
         const mockPets = generateMockPets(pets);
 
-        await usersService.inserMany(mockeUsers);
-        await petsService.inserMany(mockPets);
+        const insertedUsers = await users.usersService.insertMany(mockeUsers);
+        const insertedPets = await petsService.insertMany(mockPets);
+        res.status(201).json({
+            message: `Data succesfly: Users:${insertedUsers.length}, Pets:${insertedPets.length}`,
+            status: 'success',
+            payload: {
+                usersInserted: insertedUsers.length,
+                petsInserted: insertedPets.length
+            }
+        })
 
-        res.send(201).json({ message: 'Succesfly Data'});
+       
     } catch (error) {
         res.status(500).json({ error: 'Error Data'})
     }
@@ -30,5 +40,5 @@ const getMockPets = (req, res) => {
  export default {
     getMockPets,
     getMockUsers,
-    generateData,
+    generateData
  }

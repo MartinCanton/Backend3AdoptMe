@@ -20,14 +20,18 @@ const generateMockUsers = (num) => {
 
 const generateMockPets = (num) => {
     const pets = [];
+    const petSpecies = ['dog', 'cat', 'hamster', 'bird', 'rabbit'];
+
     for (let i = 0; i < num; i++) {
+        const specie = faker.helpers.arrayElement(petSpecies);
+
         const pet = {
             name: faker.animal.petName(),
-            specie: faker.animal.type(),
+            specie,
             birthDate: faker.past(10),
             adopted: faker.datatype.boolean(),
             owner: null,
-            image: faker.image.urlLoremFlickr({ category: 'animals'})
+            image: faker.image.urlLoremFlickr({ category: 'specie'})
         };
         pets.push(pet);
     }
