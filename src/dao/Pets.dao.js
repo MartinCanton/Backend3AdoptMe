@@ -24,5 +24,5 @@ export default class Pet {
 
     insertMany = (docs) => {
         return petModel.insertMany(docs);
-    }
+      };
 }
