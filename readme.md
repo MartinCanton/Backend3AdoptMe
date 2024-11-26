@@ -21,13 +21,15 @@ Se ingresan datos masivamente para facilitar los test con datos ficticios.
 ## Endpoints:
 
 **GET**
+<br>
 Para generar y devolver 50 Mascotas:
 /api/mocks/mockingpets 
-
+<br>
 Para generar y devolver 50  Users:
 /api/mocks/mockingusers
 
 **POST**
+<br>
 Genera e inserta los datos en la DB:
 /api/mocks/generateData 
 
