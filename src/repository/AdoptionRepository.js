@@ -4,7 +4,7 @@ export default class AdoptionRepository extends GenericRepository {
     constructor(dao){
         super(dao);
     }
-    getAdoptionById = (aid) => {
-        return this.getBy({ _id:aid})
+    getAdoptionById = (aid) =>{
+        return this.getBy({_id:aid})
     }
 }

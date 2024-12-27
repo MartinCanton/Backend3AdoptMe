@@ -1,6 +1,6 @@
 import request from "supertest";
 import { expect } from "chai";
-import app from "../app.js";
+import app from "../app.js"
 import {
     adoptionsService,
     petsService,
@@ -20,10 +20,10 @@ describe("Adoptions API Tests", () => {
         });
         userId = user._id;
 
-        const pet = await petsService.create({
+        const pet = await petsService.create({ 
             name: "TestPet",
-            specie: "cat",
-            adopted: false
+            specie: "cat", 
+            adopted: false 
 
         });
         petId = pet._id;

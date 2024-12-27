@@ -14,8 +14,19 @@ Se ingresan datos masivamente para facilitar los test con datos ficticios.
     ```
 3.  Crear archivo .env en la raíz del proyecto. *** Ver Referencia de variables en .env.example *** **Las variables para el proyecto se dieron al momento de entregar el repositorio**
 4.  Ejecutar:
+    **Producción**
     ```bash
-    npm run dev
+    npm start
+    ```
+ 
+    **Desarrollo**
+    ```bash
+    npm run dev 
+    ```
+
+    **TEST**
+    ```bash
+    npm test 
     ```
 
 ## Endpoints:

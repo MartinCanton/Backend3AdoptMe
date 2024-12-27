@@ -1,4 +1,5 @@
 import { adoptionsService, petsService, usersService } from "../services/index.js"
+import mongoose from "mongoose";
 
 const getAllAdoptions = async(req,res)=>{
     const result = await adoptionsService.getAll();
@@ -14,9 +15,15 @@ const getAdoption = async(req,res)=>{
 
 const createAdoption = async(req,res)=>{
     const {uid,pid} = req.params;
-    const user = await usersService.getUserById(uid);
+    if (!mongoose.isValidObjectId(uid)) {
+        return res.status(400).send({ status: "error", error: "Invalid user ID format" });
+    }
+    if (!mongoose.isValidObjectId(pid)) {
+        return res.status(400).send({ status: "error", error: "Invalid pet ID format" });
+    }
+    const user = await usersService.getUserById({_id:uid});
     if(!user) return res.status(404).send({status:"error", error:"user Not found"});
-    const pet = await petsService.getBy({_id:pid});
+    const pet = await petsService.getPetById({_id:pid});
     if(!pet) return res.status(404).send({status:"error",error:"Pet not found"});
     if(pet.adopted) return res.status(400).send({status:"error",error:"Pet is already adopted"});
     user.pets.push(pet._id);
