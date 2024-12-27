@@ -5,6 +5,9 @@
 Este proyecto nos permite utilizar datos de prueba de usuarios y mascotas mediante la biblioteca Faker. 
 Se ingresan datos masivamente para facilitar los test con datos ficticios.
 
+## Docker:
+Link de DOCKERHUB: https://hub.docker.com/r/martincanton96/backend3adoptme
+
 
 ## Instalación:
 1.  Descargar o clonar el repositorio. 
